@@ -3,7 +3,7 @@ import {
   incrementSnakeSize,
   initializeNewApple,
   isGameOver,
-  getNewTalePosition,
+  getNewSnakeHeadPosition,
   didSnakeReachApple,
 } from '../../util/snake';
 
@@ -29,8 +29,8 @@ function moveSnake(state, action) {
   }
 
   if (snakeReachedApple) {
-    const snakeNewTalePos = getNewTalePosition(snake[0], move);
-    newSnake.push(snakeNewTalePos);
+    const newSnakeHeadPos = getNewSnakeHeadPosition(snake, move);
+    newSnake.push(newSnakeHeadPos);
   }
   newSnake = incrementSnakeSize(newSnake, move, { cols, rows });
 
