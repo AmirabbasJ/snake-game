@@ -1,10 +1,10 @@
 import { snakeInitState } from '../../data/snakeInitState';
-import { samePosition } from '../../util/general';
 import {
   incrementSnakeSize,
   initializeNewApple,
   isGameOver,
   getNewTalePosition,
+  didSnakeReachApple,
 } from '../../util/snake';
 
 function moveSnake(state, action) {
@@ -15,9 +15,7 @@ function moveSnake(state, action) {
   }
 
   let newSnake = [...snake];
-  const [snakeHead] = newSnake;
-
-  const snakeReachedApple = samePosition(snakeHead, apple);
+  const snakeReachedApple = didSnakeReachApple(snake, apple);
 
   const newApple = snakeReachedApple
     ? initializeNewApple({ rows, cols })
@@ -31,7 +29,7 @@ function moveSnake(state, action) {
   }
 
   if (snakeReachedApple) {
-    const snakeNewTalePos = getNewTalePosition(snakeHead, move);
+    const snakeNewTalePos = getNewTalePosition(snake[0], move);
     newSnake.push(snakeNewTalePos);
   }
   newSnake = incrementSnakeSize(newSnake, move, { cols, rows });
