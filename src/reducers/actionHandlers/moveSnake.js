@@ -3,15 +3,14 @@ import { samePosition } from '../../util/general';
 import {
   incrementSnakeSize,
   initializeNewApple,
-  checkSnakeDeath,
+  isGameOver,
   getNewTalePosition,
 } from '../../util/snake';
 
 function moveSnake(state, action) {
   const { snake, moves, cols, rows, apple } = state;
 
-  const isGameOver = checkSnakeDeath(snake);
-  if (isGameOver) {
+  if (isGameOver(snake)) {
     return snakeInitState;
   }
 

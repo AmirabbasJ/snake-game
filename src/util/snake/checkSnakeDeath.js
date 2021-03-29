@@ -1,6 +1,6 @@
 import { samePosition } from '../../util/general';
 
-function checkSnakeDeath(snake) {
+function isGameOver(snake) {
   if (snake.length === 1) {
     return false;
   }
@@ -9,4 +9,4 @@ function checkSnakeDeath(snake) {
     return samePosition(snakeHead, pos);
   });
 }
-export { checkSnakeDeath };
+export { isGameOver };
