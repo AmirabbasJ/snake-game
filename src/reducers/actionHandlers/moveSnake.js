@@ -10,10 +10,19 @@ import {
 function moveSnake(state, action) {
   const { snake, moves, cols, rows, apple } = state;
 
-  let newApple = { ...apple };
+  const snakeAteItself = checkSnakeDeath(snake);
+  if (snakeAteItself) {
+    return snakeInitState;
+  }
 
   let newSnake = [...snake];
   const [snakeHead] = newSnake;
+
+  const snakeReachedApple = samePosition(snakeHead, apple);
+
+  const newApple = snakeReachedApple
+    ? initializeNewApple({ rows, cols })
+    : apple;
 
   const newMoves = [...moves];
   const [move] = newMoves;
@@ -22,13 +31,7 @@ function moveSnake(state, action) {
     newMoves.shift();
   }
 
-  const snakeAteItself = checkSnakeDeath(snake);
-  if (snakeAteItself) {
-    return snakeInitState;
-  }
-  const snakeReachedApple = samePosition(snakeHead, apple);
   if (snakeReachedApple) {
-    newApple = initializeNewApple({ rows, cols });
     const snakeNewTalePos = getNewTalePosition(snakeHead, move);
     newSnake.push(snakeNewTalePos);
   }
