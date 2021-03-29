@@ -10,8 +10,8 @@ import {
 function moveSnake(state, action) {
   const { snake, moves, cols, rows, apple } = state;
 
-  const snakeAteItself = checkSnakeDeath(snake);
-  if (snakeAteItself) {
+  const isGameOver = checkSnakeDeath(snake);
+  if (isGameOver) {
     return snakeInitState;
   }
 
