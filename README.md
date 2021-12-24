@@ -1,21 +1,13 @@
-![React Logo](https://github.com/vercel/vercel/blob/main/packages/frameworks/logos/react.svg)
+# Prerequisite
 
-# React Example
+- [POSIX-compliant shell][shell]
+- [git][git] >= 2
+- [github-cli][github-cli] >= 2
+- [node][nodejs] >= 14
+- [npm][npm] >= 6
 
-This directory is a brief example of a [React](https://reactjs.org/) app with [Serverless Functions](https://vercel.com/docs/v2/serverless-functions/introduction) that can be deployed with Vercel and zero configuration.
+# how to run
 
-## Deploy Your Own
+first run `npm install` then run `npm run start` then the game should be running on localhost port 3000
 
-Deploy your own React project, along with Serverless Functions, with Vercel.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/create-react-app-functions&template=create-react-app)
-
-_Live Example: https://create-react-app.now-examples.now.sh/_
-
-### How We Created This Example
-
-To get started with React, along with [Serverless Functions](https://vercel.com/docs/v2/serverless-functions/introduction), with Vercel, you can use the [Create-React-App CLI](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) to initialize the project:
-
-```shell
-$ npx create-react-app my-app
-```
+also the code can be improved I just didn't have enough time for it
