@@ -1,26 +1,25 @@
-import React from 'react';
-
-import Snake from './snake';
-import Apple from './apple';
-import useSnake from '../hooks/use-snake';
+import React, { useState } from 'react';
+import MusicContextProvider from '../context/musicContext';
+import ScoreContextProvider from '../context/scoreContext';
+import Board from './board';
+import LostMenu from './LostMenu';
+import Menu from './menu';
 
 const Game = () => {
-  const state = useSnake();
+  const [state, setState] = useState('start');
 
   return (
-    <>
-      <h1>Snake Game</h1>
-      <div
-        className="game-board"
-        style={{
-          width: `${state.board.width}px`,
-          height: `${state.board.height}px`
-        }}
-      >
-        <Snake state={state} />
-        <Apple state={state} />
-      </div>
-    </>
+    <MusicContextProvider>
+      <ScoreContextProvider>
+        {state === 'game' ? (
+          <Board setState={setState} />
+        ) : state === 'start' ? (
+          <Menu setState={setState} />
+        ) : (
+          <LostMenu setState={setState} />
+        )}
+      </ScoreContextProvider>
+    </MusicContextProvider>
   );
 };
 

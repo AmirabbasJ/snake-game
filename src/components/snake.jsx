@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Snake = props => {
-  const {rows, cols, snake, board} = props.state;
+const Snake = (props) => {
+  const { rows, cols, snake, board } = props.state;
 
   return (
     <>
@@ -14,7 +14,7 @@ const Snake = props => {
             left: `${(board.width / cols) * dot.x}px`,
             top: `${(board.height / rows) * dot.y}px`,
             width: `${board.width / cols}px`,
-            height: `${board.height / rows}px`
+            height: `${board.height / rows}px`,
           }}
         ></div>
       ))}

@@ -1,4 +1,3 @@
-import { snakeInitState } from '../../data/snakeInitState';
 import {
   incrementSnakeSize,
   initializeNewApple,
@@ -7,13 +6,12 @@ import {
   didSnakeReachApple,
 } from '../../util/snake';
 
-function moveSnake(state, action) {
+function moveSnake(state, _) {
   const { snake, moves, cols, rows, apple } = state;
 
   if (isGameOver(snake)) {
-    return snakeInitState;
+    return { ...state, state: 'dead' };
   }
-
   let newSnake = [...snake];
   const snakeReachedApple = didSnakeReachApple(snake, apple);
 
@@ -24,9 +22,7 @@ function moveSnake(state, action) {
   const newMoves = [...moves];
   const [move] = newMoves;
 
-  if (newMoves.length > 1) {
-    newMoves.shift();
-  }
+  if (newMoves.length > 1) newMoves.shift();
 
   if (snakeReachedApple) {
     const newSnakeHeadPos = getNewSnakeHeadPosition(snake, move);
