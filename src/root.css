@@ -7,7 +7,7 @@
 @font-face {
   font-family: 'Nixie One';
   src: local('Nixie One'),
-    url('./fonts/NixieOne-Regular.ttf') format('truetype');
+    url('./assets/fonts/NixieOne-Regular.ttf') format('truetype');
 }
 
 body,
@@ -95,9 +95,6 @@ button:hover {
     0 0 1.8rem #23bd82, 0 0 2.8rem #26e99e, inset 0 0 1.3rem #26e99e;
   background-color: #30eba3;
   cursor: pointer;
-}
-
-.highest-score {
 }
 
 h1 {

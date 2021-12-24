@@ -1,6 +1,6 @@
 import { createContext, useRef } from 'react';
 import React from 'react';
-import music from '../assets/theme.mp3';
+import music from '../assets/musics/theme.mp3';
 import { Howl } from 'howler';
 
 export const MusicContext = createContext();
