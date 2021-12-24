@@ -1,15 +1,13 @@
 import React from 'react';
 
-const Snake = (props) => {
-  const { rows, cols, snake, board } = props.state;
-
+const Snake = ({ state: snakeState, className = '' }) => {
+  const { rows, cols, snake, board } = snakeState;
   return (
     <>
       {snake.map((dot, idx) => (
         <div
           key={idx}
-          className="snake"
-          data-testid="snake"
+          className={`snake ${className} shake-constant`}
           style={{
             left: `${(board.width / cols) * dot.x}px`,
             top: `${(board.height / rows) * dot.y}px`,

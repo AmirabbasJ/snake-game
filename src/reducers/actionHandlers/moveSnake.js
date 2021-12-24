@@ -16,7 +16,7 @@ function moveSnake(state, _) {
   const snakeReachedApple = didSnakeReachApple(snake, apple);
 
   const newApple = snakeReachedApple
-    ? initializeNewApple({ rows, cols })
+    ? initializeNewApple({ rows, cols, snake, apple })
     : apple;
 
   const newMoves = [...moves];

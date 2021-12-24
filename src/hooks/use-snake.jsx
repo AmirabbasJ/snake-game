@@ -62,7 +62,6 @@ export default function useSnake() {
   }, []);
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log('moving');
       dispatch({ type: MOVE_SNAKE });
     }, snakeInfo.speed);
 

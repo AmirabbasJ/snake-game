@@ -4,7 +4,7 @@ import useMusics from '../hooks/useMusics';
 
 const Menu = ({ setState }) => {
   const { highestScore } = useContext(ScoreContext);
-  const { themeMusic } = useMusics();
+  const { themeMusic, explosion } = useMusics();
 
   return (
     <div className="menu">
@@ -27,6 +27,7 @@ const Menu = ({ setState }) => {
 
       <button
         onClick={() => {
+          explosion.stop();
           themeMusic.play();
           setState('game');
         }}
