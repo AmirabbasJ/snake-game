@@ -13,7 +13,7 @@ export default function usePhase(score) {
       : score < 27
       ? 'shake'
       : score < 36
-      ? 'shake-opacity shake-chunk'
+      ? 'shake-opacity shake-rotate'
       : score < 46
       ? 'shake-opacity shake-hard'
       : 'shake-opacity shake-crazy';
@@ -21,16 +21,20 @@ export default function usePhase(score) {
     const limScore = Math.min(score, 50);
     if (limScore < 6) themeMusic.rate(1);
     else themeMusic.rate(1 - (limScore - 6) / 50);
-    html.current.style = `${bodyStyle};\nfilter: grayscale(${Math.floor(
-      (limScore * 150) / 35
-    )}%) brightness(${(1 - (limScore * 0.5) / 50).toFixed(
-      1
-    )}) contrast(${Math.floor(100 + (limScore * 50) / 50)}%) ${
-      limScore >= 30 ? ' invert(0.2)' : ''
-    };`;
+    if (limScore >= 40)
+      html.current.style = `${bodyStyle};\nfilter: grayscale(100%) brightness(0.7) contrast(1000000000%) invert(.9)`;
+    else
+      html.current.style = `${bodyStyle};\nfilter: grayscale(${Math.floor(
+        (limScore * 150) / 50
+      )}%) brightness(${(1 - (limScore * 0.5) / 50).toFixed(
+        1
+      )}) contrast(${Math.floor(100 + (limScore * 50) / 50)}%) ${
+        limScore >= 36 ? `invert(${(limScore * 0.9) / 40})` : ''
+      };`;
+    const el = html.current;
     return () => {
       themeMusic.rate(1);
-      html.current.style = '';
+      el.style = '';
     };
   }, [bodyStyle, score, themeMusic]);
   useEffect(() => {
